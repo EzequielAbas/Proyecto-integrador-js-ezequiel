@@ -101,7 +101,6 @@ const renderProducts = (productsList) => {
 };
 
 
-
 //Función para aplicar el filtro cuando se cliquea el botón de categoría
 
 const applyFilter = ({ target }) => {
@@ -111,10 +110,10 @@ const applyFilter = ({ target }) => {
     productsContainer.innerHTML = '';
     if (appState.activeFilter) {
         renderFilteredProducts();
-        appState.currentProductsIndex = 0;
+        appState.currentProductsIndex = 24;
         return;
     }
-    renderProducts(appState.products[0]);
+    renderProducts(appState.products[24]);
 };
 
 //renderizar los productos filtrados
@@ -152,14 +151,14 @@ const changeBtnActiveState = (selectedCategory) => {
     })
 };
 
-//función para mostrar u ocultar el botón de "ver más" según corresponsa
-const setShowMoreVisibility = () => {
-    if (!appState.activeFilter) {
-        showMoreBtn.classList.remove("hidden")
-        return
-    }
-    showMoreBtn.classList.add("hidden")
-};
+// //función para mostrar u ocultar el botón de "ver más" según corresponsa
+// const setShowMoreVisibility = () => {
+//     if (!appState.activeFilter) {
+//         showMoreBtn.classList.remove("hidden")
+//         return
+//     }
+//     showMoreBtn.classList.add("hidden")
+// };
 
 // Filtro basado en cada categoría
 function filterProducts(category) {
@@ -197,23 +196,23 @@ const isLastIndexOf = () => {
     return appState.currentProductsIndex === appState.productsLimit - 1;
 }
 
-//función para mostrar más productos ante el click del usuario en el botón "ver más"
-const showMoreProducts = () => {
-    appState.currentProductsIndex += 1;
-    let { products, currentProductsIndex } = appState;
-    renderProducts(products[currentProductsIndex]);
-    if (isLastIndexOf()) {
-        showMoreBtn.classList.add("hidden");
-    }
-}
+// //función para mostrar más productos ante el click del usuario en el botón "ver más"
+// const showMoreProducts = () => {
+//     appState.currentProductsIndex += 1;
+//     let { products, currentProductsIndex } = appState;
+//     renderProducts(products[currentProductsIndex]);
+//     if (isLastIndexOf()) {
+//         showMoreBtn.classList.add("hidden");
+//     }
+// }
 
 // };
 
 //CATEGORIAS
 
-// // Despliegue inicial de productos
-// const allProducts = productsData;
-// createProductTemplate(allProducts);
+//Despliegue inicial de productos
+const allProducts = productsData;
+createProductTemplate(allProducts);
 
 // //habilitar o deshabilitar un botón según corresponda
 // //La lógica la comparten, si el carro está vacío, los saco a ambos, si hay algo en el cart los habilito
